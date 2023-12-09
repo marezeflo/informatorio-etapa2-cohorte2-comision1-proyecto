@@ -3,6 +3,6 @@ from . import views
 
 app_name = 'publicaciones'
 
-# urlpatterns = [
-#     path('',name = '')
-# ]
+urlpatterns = [
+    path('crear/', views.Crear_publicacion.as_view(), name ='crear_publicacion'),
+ ]
