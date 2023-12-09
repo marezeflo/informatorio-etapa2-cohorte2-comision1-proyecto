@@ -4,7 +4,7 @@ from django.db import models
 
 class Comentario(models.Model):
 
-    usuario = models.IntegerField()
+    # usuario = models.ForeignKey(usuario,on_delete=models.CASCADE)
 
     contenido = models.TextField()
 
@@ -18,6 +18,6 @@ class Comentario(models.Model):
         auto_now = True
     )
 
-    meGusta = models.IntegerField()
+    meGusta = models.IntegerField(default = 0)
 
-    noMeGusta = models.IntegerField()
+    noMeGusta = models.IntegerField(default = 0)
