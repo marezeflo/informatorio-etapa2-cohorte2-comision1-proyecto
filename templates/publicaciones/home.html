@@ -1,0 +1,10 @@
+{% block contenido %}
+
+<!-- pub = toda la public -->
+{% for p in publicaciones %}
+<hr>
+    <h2>{{p.titulo}}</h2>
+    <h5>{{p.contenido}}</h5>
+{% endfor %}
+
+{% endblock contenido %}

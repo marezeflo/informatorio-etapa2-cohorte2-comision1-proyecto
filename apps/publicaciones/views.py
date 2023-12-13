@@ -10,12 +10,20 @@ from .forms import FormularioPublicar, FormularioEditar
 class home(ListView):
     model = Publicacion
     template_name = 'publicaciones/home.html'
-    context_object_name = 'publicacion'
+    context_object_name = 'publicaciones'
 
-class publicacion(ListView):
-    model = Publicacion
-    template_name = 'publicaciones/publicacion.html'
-    context_object_name = 'publicacion'
+def mostrarPublicacion(request, pk):
+    publicacion = Publicacion.objects.get(pk = pk)
+    contexto = {}
+    contexto['pub'] = publicacion
+
+    return render(request, 'publicaciones/detalle.html', contexto)
+
+# ESTA CLASE HACE LO MISMO QUE EL CLASS HOME 
+# class publicacion(ListView):
+#     model = Publicacion
+#     template_name = 'publicaciones/publicacion.html'
+#     context_object_name = 'publicacion'
 
 class publicar(CreateView):
     model = Publicacion
