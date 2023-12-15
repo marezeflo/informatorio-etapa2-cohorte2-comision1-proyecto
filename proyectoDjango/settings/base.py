@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 from django.urls import reverse_lazy
 
-# AUTH
+# Autentificacion
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'apps.usuarios',
     'apps.publicaciones',
     'apps.comentarios',
-    'apps.registro',
 ]
 
 MIDDLEWARE = [
