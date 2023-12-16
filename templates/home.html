@@ -11,7 +11,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
                     <h1>El Cambio Climático</h1>
-                    <span class="subheading">Cambio Climático, cambio de mentalidad: Inspirando hoy, protegiendo el mañana</span>
+                    <span class="subheading">Cambio de mentalidad: Inspirando hoy, protegiendo el mañana</span>
                 </div>
             </div>
         </div>
@@ -31,13 +31,14 @@
                 {% for publicacion in ultimasTresPublicaciones %}
                 <!-- Post preview-->
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="{% url 'publicaciones:unaPublicacion' publicacion.pk %}">
                         <h2 class="post-title">{{publicacion.titulo}}</h2>
                         <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                        <p><img src="{{publicacion.imagen}}"></p>
                     </a>
                     <p class="post-meta">
                         Publicado por
-                        <a href="#!">{{publicacion.usuario}}</a>
+                        <a href="">{{publicacion.usuario}}</a>
                         el {{publicacion.fechaCreacion}}
                     </p>
                 </div>
