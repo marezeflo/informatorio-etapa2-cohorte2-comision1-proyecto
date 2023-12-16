@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from apps.publicaciones.models import Publicacion
 
 def home(request):
-    return render(request, 'home.html')
+
+    ultimasTresPublicaciones = Publicacion.objects.order_by('-fechaCreacion')[:3]
+    contexto = {'ultimasTresPublicaciones': ultimasTresPublicaciones }
+    return render(request, 'home.html', contexto)
