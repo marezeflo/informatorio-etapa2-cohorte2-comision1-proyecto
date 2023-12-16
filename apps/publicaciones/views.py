@@ -19,7 +19,7 @@ def mostrarPublicacion(request, pk):
     contexto = {}
     contexto['pub'] = publicacion
 
-    comentario = Comentario.object.filter(publicacion = publicacion)
+    comentario = Comentario.objects.filter(publicacion = publicacion)
     contexto['com'] = comentario
     return render(request, 'publicaciones/detalle.html', contexto)
 

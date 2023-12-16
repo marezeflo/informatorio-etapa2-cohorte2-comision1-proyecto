@@ -20,9 +20,9 @@ class editarComentario(UpdateView):
     form_class = FormularioEditar
     template_name = 'comentarios/editar.html'
     def get_success_url(self):
-        return reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk': self.object.pub.pk})
+        return reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk': self.objects.pub.pk})
     
 class eliminarComentario(DeleteView):
     model = Comentario
     def get_success_url(self):
-        return reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk': self.object.pub.pk})
+        return reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk': self.objects.pub.pk})
