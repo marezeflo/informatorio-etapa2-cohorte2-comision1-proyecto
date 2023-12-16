@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 from .models import Publicacion
 from .forms import FormularioPublicar, FormularioEditar
 
+from apps.comentarios.models import Comentario
+
 # Create your views here.
 
 class home(ListView):
@@ -17,6 +19,8 @@ def mostrarPublicacion(request, pk):
     contexto = {}
     contexto['pub'] = publicacion
 
+    comentario = Comentario.object.filter(publicacion = publicacion)
+    contexto['com'] = comentario
     return render(request, 'publicaciones/detalle.html', contexto)
 
 # ESTA CLASE HACE LO MISMO QUE EL CLASS HOME 
