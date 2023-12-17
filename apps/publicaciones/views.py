@@ -14,33 +14,27 @@ class home(ListView):
     template_name = 'publicaciones/home.html'
     context_object_name = 'publicaciones'
 
-def mostrarPublicacion(request, pk):
+def mostrar(request, pk):
     publicacion = Publicacion.objects.get(pk = pk)
     contexto = {}
-    contexto['pub'] = publicacion
+    contexto['publicacion'] = publicacion
 
     comentario = Comentario.objects.filter(publicacion = publicacion)
-    contexto['com'] = comentario
-    return render(request, 'publicaciones/detalle.html', contexto)
+    contexto['comentario'] = comentario
+    return render(request, 'publicaciones/mostrar.html', contexto)
 
-# ESTA CLASE HACE LO MISMO QUE EL CLASS HOME 
-# class publicacion(ListView):
-#     model = Publicacion
-#     template_name = 'publicaciones/publicacion.html'
-#     context_object_name = 'publicacion'
-
-class publicar(CreateView):
+class crear(CreateView):
     model = Publicacion
-    template_name = 'publicaciones/publicar.html'
+    template_name = 'publicaciones/crearPublicacion.html'
     form_class = FormularioPublicar
     succes_url = reverse_lazy('publicaciones:home')
 
-class editarPublicacion(UpdateView):
+class editar(UpdateView):
     model = Publicacion
-    template_name = 'publicaciones/editarPublicacion.html'
+    template_name = 'publicaciones/editar.html'
     form_class = FormularioEditar
 
-class borrarPublicacion(DeleteView):
+class eliminar(DeleteView):
     model = Publicacion
     sucess_url = reverse_lazy('publicaciones:home')
 
