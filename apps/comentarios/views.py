@@ -1,0 +1,28 @@
+from django.shortcuts import render, HttpResponseRedirect
+from django.views.generic import UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+from .models import Comentario
+from .forms import FormularioEditar
+from apps.publicaciones.models import Publicacion
+
+# Create your views here.
+
+def crear(request, pk):
+    contenido = request.POST.get('comentario', None)
+    publicacion = Publicacion.objects.get(pk=pk)
+    usuario = request.user 
+    Comentario.objects.create(contenido=contenido, usuario=usuario, publicacion=publicacion)
+    return HttpResponseRedirect(reverse_lazy('publicaciones:mostrar', kwargs={'pk':pk}))
+
+class editar(UpdateView):
+    model = Comentario
+    form_class = FormularioEditar
+    template_name = 'comentarios/editar.html'
+    def get_success_url(self):
+        return reverse_lazy('publicaciones:mostrar', kwargs={'pk': self.objects.pub.pk})
+    
+class eliminar(DeleteView):
+    model = Comentario
+    def get_success_url(self):
+        return reverse_lazy('publicaciones:mostrar', kwargs={'pk': self.objects.pub.pk})

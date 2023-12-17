@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} El Cambio Climático - Contacto {% endblock titulo %}
+
+{% block contenido %}
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{% static 'img/contacto.png' %}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Contáctanos</h1>
+                            <span class="subheading">¿Algo que contar? Te escuchamos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Rellená el formulario para ponerte en contacto con nosotros y nos comunicaremos cuanto antes.</p>
+                        <div class="my-5">
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- * * SB Forms Contact Form * *-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- This form is pre-integrated with SB Forms.-->
+                            <!-- To make this form functional, sign up at-->
+                            <!-- https://startbootstrap.com/solution/contact-forms-->
+                            <!-- to get an API token!-->
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <div class="form-floating">
+                                    <input class="form-control" id="nombre" type="text" placeholder="Escriba su nombre..." data-sb-validations="required" />
+                                    <label for="nombre">Nombre</label>
+                                    <div class="invalid-feedback" data-sb-feedback="nombre:required">El nombre es obligatorio.</div>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="email" type="email" placeholder="Escriba su correo electrónico..." data-sb-validations="required,email" />
+                                    <label for="email">Correo Electrónico</label>
+                                    <div class="invalid-feedback" data-sb-feedback="email:required">El correo electrónico es obligatorio.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="email:email">El correo electrónico no es válido.</div>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="celular" type="tel" placeholder="Escriba su número celular..." data-sb-validations="required" />
+                                    <label for="celular">Número celular</label>
+                                    <div class="invalid-feedback" data-sb-feedback="celular:required">El número de celular es obligatorio.</div>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="mensaje" placeholder="Escriba su mensaje..." style="height: 12rem" data-sb-validations="required"></textarea>
+                                    <label for="mensaje">Mensaje</label>
+                                    <div class="invalid-feedback" data-sb-feedback="mensaje:required">El mensaje es obligatorio.</div>
+                                </div>
+                                <br />
+                                <!-- Submit success message-->
+                                <!---->
+                                <!-- This is what your users will see when the form-->
+                                <!-- has successfully submitted-->
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">¡Enviado! Responderemos cuanto antes</div>
+                                    </div>
+                                </div>
+                                <!-- Submit error message-->
+                                <!---->
+                                <!-- This is what your users will see when there is-->
+                                <!-- an error submitting the form-->
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">¡Error enviando el mensaje!</div></div>
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+{% endblock contenido %}
