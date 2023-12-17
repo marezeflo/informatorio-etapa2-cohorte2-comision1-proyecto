@@ -35,4 +35,39 @@
     </div>
 </article>
 
+
+<!-- Mostrar los comentarios -->
+
+<section>
+    {% for c in comentario %}
+    <div class="cajaComentarios_container">
+        <div class="cajaComentarios_comentario">
+            <div class="cajaComentarios_titulo">
+                <div class="__usuario">@{{c.usuario}}</div>
+                <div class="__fecha">{{c.fechaEdicion.date}}</div>
+            </div>
+            <div class="cajaComentarios_contenido">{{c.contenido}}</div>
+        </div>
+        <div class="cajaComentarios_botones">
+            <a href="{% url 'comentarios:editar' c.pk %}">Editar</a><a
+                href="{% url 'comentarios:eliminar' c.pk %}">Eliminar</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Crear un comentario.  -->
+    {% if request.user.is_authenticated %}
+
+    <form action="{% url 'comentarios:crear' publicacion.pk %}" method="post" class="formComentarios">
+        {% csrf_token %}
+        <label for="comentario" class="__titulo">Agregá un comentario: </label>
+        <div class="__container">
+            <input type="text" name="comentario" id="comentario" class="__campoInput">
+            <input type="submit" value="Comentar" class="__botonSubmit">
+        </div>
+    </form>
+    {% endif %}
+</section>
+
+
 {% endblock contenido %}

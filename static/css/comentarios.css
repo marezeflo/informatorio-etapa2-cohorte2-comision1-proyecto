@@ -1,0 +1,110 @@
+/* Caja de comentarios */
+.cajaComentarios_container {
+    margin: 2rem;
+    padding: 1rem 2rem 0rem 2rem;
+    border-top: 1px solid rgba(67, 67, 67, 0.8);
+    border-bottom: 1px solid rgba(67, 67, 67, 0.8);
+    border-radius: 1rem;
+    display: grid;
+    -webkit-box-shadow: 7px 7px 12px -1px rgba(0, 0, 0, 0.74);
+    -moz-box-shadow: 7px 7px 12px -1px rgba(0, 0, 0, 0.74);
+    box-shadow: 7px 7px 12px -1px rgba(0, 0, 0, 0.74);
+    grid-template-columns: 4fr 1fr;
+}
+
+.cajaComentarios_titulo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cajaComentarios_titulo div {
+    padding: 0rem 0.3rem 0rem 0.3rem;
+}
+
+.cajaComentarios_titulo .__usuario {
+    font-weight: bold;
+}
+
+.cajaComentarios_titulo .__fecha {
+    font-size: 1rem
+}
+
+.cajaComentarios_contenido {
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.cajaComentarios_botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cajaComentarios_botones a {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid black;
+    border-radius: 5rem;
+    transition: all 0.5s;
+    -webkit-box-shadow: inset 0px -10px 23px -12px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: inset 0px -10px 23px -12px rgba(0, 0, 0, 0.61);
+    box-shadow: inset 0px -10px 23px -12px rgba(0, 0, 0, 0.61);
+}
+
+.cajaComentarios_botones a:hover {
+    background-color: lightgray;
+}
+
+/* Formulario para crear un comentario */
+
+.formComentarios {
+    margin: 5rem 3rem 5rem 3rem;
+    padding: 3rem;
+    border: 1px solid black;
+    border-radius: 2rem;
+    -webkit-box-shadow: 7px 7px 12px -1px rgba(0, 0, 0, 0.74);
+    -moz-box-shadow: 7px 7px 12px -1px rgba(0, 0, 0, 0.74);
+    box-shadow: 7px 7px 12px -1px rgba(0, 0, 0, 0.74);
+}
+
+
+.formComentarios .__titulo {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.formComentarios .__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.formComentarios .__campoInput {
+    width: 100%;
+    background-color: transparent;
+    text-decoration: none;
+    border: 0;
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+
+.formComentarios .__botonSubmit {
+    margin-left: 2rem;
+    background-color: transparent;
+    font-size: 1.1rem;
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 5rem;
+    transition: all 0.5s;
+    -webkit-box-shadow: inset 0px -10px 23px -12px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: inset 0px -10px 23px -12px rgba(0, 0, 0, 0.61);
+    box-shadow: inset 0px -10px 23px -12px rgba(0, 0, 0, 0.61);
+}
+.formComentarios .__botonSubmit:hover {
+    background-color: lightgray;
+}
