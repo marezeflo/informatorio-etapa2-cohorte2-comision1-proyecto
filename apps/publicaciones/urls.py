@@ -10,8 +10,8 @@ urlpatterns = [
     path('', views.home.as_view(), name='home'),
 
     # READ DEL CRUD (UNA PUBLICACION ESPECIFICA)
-    # 127.0.0.1:8000/publicaciones/1
-    path('<int:pk>/', views.mostrar, name='mostrar'),
+    # 127.0.0.1:8000/publicaciones/mostrar/1
+    path('mostrar/<int:pk>', views.mostrar, name='mostrar'),
     
     # CREATE DEL CRUD.(CREAR UNA PUBLICACION)
     # 127.0.0.1:8000/publicaciones/crear
