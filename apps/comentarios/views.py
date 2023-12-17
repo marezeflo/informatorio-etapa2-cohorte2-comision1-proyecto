@@ -8,21 +8,21 @@ from apps.publicaciones.models import Publicacion
 
 # Create your views here.
 
-def crearComentario(request, pk):
+def crear(request, pk):
     contenido = request.POST.get('comentario', None)
     publicacion = Publicacion.objects.get(pk=pk)
     usuario = request.user 
     Comentario.objects.create(contenido=contenido, usuario=usuario, publicacion=publicacion)
-    return HttpResponseRedirect(reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk':pk}))
+    return HttpResponseRedirect(reverse_lazy('publicaciones:mostrar', kwargs={'pk':pk}))
 
-class editarComentario(UpdateView):
+class editar(UpdateView):
     model = Comentario
     form_class = FormularioEditar
     template_name = 'comentarios/editar.html'
     def get_success_url(self):
-        return reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk': self.objects.pub.pk})
+        return reverse_lazy('publicaciones:mostrar', kwargs={'pk': self.objects.pub.pk})
     
-class eliminarComentario(DeleteView):
+class eliminar(DeleteView):
     model = Comentario
     def get_success_url(self):
-        return reverse_lazy('publicaciones:unaPublicacion', kwargs={'pk': self.objects.pub.pk})
+        return reverse_lazy('publicaciones:mostrar', kwargs={'pk': self.objects.pub.pk})
