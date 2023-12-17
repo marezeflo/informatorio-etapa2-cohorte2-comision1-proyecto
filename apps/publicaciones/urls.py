@@ -4,10 +4,6 @@ from . import views
 app_name = 'publicaciones'
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('crear/', views.Crear_publicacion.as_view(), name ='crear_publicacion'),
- ]
-=======
     # READ DEL CRUD (TODAS LAS PUBLICACIONES)
     # 127.0.0.1:8000/publicaciones/
     path('', views.home.as_view(), name='homePublicaciones'),
@@ -28,4 +24,3 @@ urlpatterns = [
     # 127.0.0.1:8000/publicaciones/eliminar/1
     path('eliminar/<int:pk>', views.borrarPublicacion.as_view(), name='eliminarPublicacion'),
 ]
->>>>>>> 95a0110dfc28b7ab876d62170cf89f7b145315a5

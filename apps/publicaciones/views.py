@@ -1,20 +1,4 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-from django.views.generic import CreateView
-#from django.urls import reverse_lazy
-
-from .models import Publicacion
-from .forms import Formulario_Publicacion
-
-
-# Create your views here.
-
-class Crear_publicacion(CreateView):
-	model = Publicacion
-	template_name = 'publicaciones/crear_publicacion.html'
-	form_class = Formulario_Publicacion
-	#success_url = reverse_lazy('publicaciones:home_publicaciones')
-=======
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
@@ -60,4 +44,3 @@ class borrarPublicacion(DeleteView):
     model = Publicacion
     sucess_url = reverse_lazy('publicaciones:home')
 
->>>>>>> 95a0110dfc28b7ab876d62170cf89f7b145315a5
