@@ -25,7 +25,7 @@ def mostrar(request, pk):
 
 class crear(CreateView):
     model = Publicacion
-    template_name = 'publicaciones/crearPublicacion.html'
+    template_name = 'publicaciones/crear.html'
     form_class = FormularioPublicar
     succes_url = reverse_lazy('publicaciones:home')
 
