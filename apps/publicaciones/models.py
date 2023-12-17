@@ -34,9 +34,5 @@ class Publicacion(models.Model):
         auto_now = True
     )
 
-    meGusta = models.IntegerField(default = 0)
-
-    noMeGusta = models.IntegerField(default = 0)
-
     def __str__(self):
         return self.titulo
