@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block titulo %} El Cambio Climático - Home {% endblock titulo %}
 
 {% block contenido %}
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('../static/assets/img/about-bg.jpg')">
+<header class="masthead" style="background-image: url('{% static 'img/home.png' %}')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
                     <h1>El Cambio Climático</h1>
-                    <span class="subheading">Todo sobre lo que le pasa a nuestro planeta</span>
+                    <span class="subheading">Cambio de mentalidad: Inspirando hoy, protegiendo el mañana</span>
                 </div>
             </div>
         </div>
@@ -22,12 +24,32 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>
+                <h2 style="font-weight: 600">
                     Bienvenido a nuestro blog, aquí encontrarás diversas publicaciones relacionadas al cambio climático y todo lo que lo refiere. Noticias, opiniones, ideas, proyectos, campañas, desastres naturales e iniciativas cívicas. Lo bueno, lo malo, lo necesario para concientizar, está aquí.
-                </p>
+                </h2>
+                <hr class="my-4" />
+                <h3> Estas son nuestras últimas publicaciones...</h3>
+                {% for publicacion in ultimasTresPublicaciones %}
+                <!-- Post preview-->
+                <hr class="my-4" />
+                <div class="post-preview">
+                    <a href="{% url 'publicaciones:mostrar' publicacion.pk %}">
+                        <h2 class="post-title">{{publicacion.titulo}}</h2>
+                        <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                        <p><img src="{{publicacion.imagen}}"></p>
+                    </a>
+                    <p class="post-meta">
+                        Publicado por
+                        <a href="">{{publicacion.usuario}}</a>
+                        el {{publicacion.fechaCreacion}}
+                    </p>
+                </div>
+                <!-- Divider-->
+                {% endfor %}
             </div>
         </div>
     </div>
+
 </main>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

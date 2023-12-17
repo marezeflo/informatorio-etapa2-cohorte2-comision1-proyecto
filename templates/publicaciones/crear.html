@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{% static 'img/publicaciones/home.png' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Crear publicación</h1>
+                    <span class="subheading">Aportá tu granito de arena</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Rellená los campos necesarios para compartir tu publicación</p>
+                <div class="my-5">
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">{% csrf_token %} {{form.as_p}}
+                        <div class="form-floating">
+                            <input class="form-control" id="titulo" type="text" placeholder="Escriba el título de su publicación..." data-sb-validations="required" />
+                            <label for="titulo">Título</label>
+                            <div class="invalid-feedback" data-sb-feedback="titulo:required">¡Debe colocarle un título a su publicación!</div>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="imagen" type="image" placeholder="Seleccione la imagen para su publicación..." data-sb-validations="required" />
+                            <label for="imagen">Imágen</label>
+                            <div class="invalid-feedback" data-sb-feedback="imagen:required">¡Debe colocarle una imagen a su publicación!</div>
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control" id="contenido" placeholder="Escriba su el contenido de su publicación..." style="height: 12rem" data-sb-validations="required"></textarea>
+                            <label for="contenido">Contenido</label>
+                            <div class="invalid-feedback" data-sb-feedback="contenido:required">¡Debe colocar contenido en su publicación!</div>
+                        </div>
+                        <br />
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">¡Publicación creada!</div>
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">¡Hubo un error con al subir tu publicación!</div></div>
+                        <!-- Submit Button-->
+                        <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Crear</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+{% endblock contenido %}
