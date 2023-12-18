@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<header class="masthead" style="background-image: url('{% static 'img/home.png' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>LOGIN</h1>
+                    <span class="subheading">Ingresa a esta nueva aventura</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container-fluid w-50 p-3">
+    <div class="card text-center">
+        <div class="card-header">
+            ¡Ingresa a tu cuenta!
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Nombre de Usuario</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" name="username">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
+                    <input type="password" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" name="password">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+        </div>
+        <div class="card-footer text-body-secondary">
+            <p>¿No estás registradx? <a href="{% url 'usuarios:registro_usuario' %}">Registrate acá</a></p>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+{% endblock contenido %}
