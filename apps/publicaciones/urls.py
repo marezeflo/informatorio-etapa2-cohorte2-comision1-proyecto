@@ -7,7 +7,7 @@ urlpatterns = [
     # READ DEL CRUD (TODAS LAS PUBLICACIONES)
     # 127.0.0.1:8000/publicaciones/
     # path('', views.home.as_view(), name='homePublicaciones'),
-    path('', views.home.as_view(), name='home'),
+    path('', views.home, name='home'),
 
     # READ DEL CRUD (UNA PUBLICACION ESPECIFICA)
     # 127.0.0.1:8000/publicaciones/mostrar/1
