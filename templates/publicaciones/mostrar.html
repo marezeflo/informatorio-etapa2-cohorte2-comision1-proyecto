@@ -30,6 +30,26 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>{{publicacion.contenido}}</p>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <h3> Comentarios </h3>
+                    <div class="post-preview">
+                        {% for comentario in comentarios %}
+                            <!-- Divider-->
+                            <hr class="my-4" />
+                            <h5 style="font-weight: 600">{{comentario.contenido}}</h6>
+                            <p class="post-meta">
+                                Publicado por
+                                <a href="">{{comentario.usuario}}</a>
+                                el {{comentario.fechaCreacion}}
+                                <br>
+                                <a href="{% url 'comentarios:editar' comentario.pk %}"> Editar </a>
+                                |
+                                <a href="{% url 'comentarios:eliminar' comentario.pk %}"> Eliminar </a>
+                                |
+                            </p>
+                        {% endfor %}
+                    </div>
             </div>
         </div>
     </div>
