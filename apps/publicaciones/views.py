@@ -20,9 +20,9 @@ def home(request):
     elif orden == 'z':
         publicaciones = publicaciones.order_by('-titulo')
     elif orden == 'nuevo':
-        publicaciones = publicaciones.order_by('fechaCreacion')
-    elif orden == 'antiguo':
         publicaciones = publicaciones.order_by('-fechaCreacion')
+    elif orden == 'antiguo':
+        publicaciones = publicaciones.order_by('fechaCreacion')
     
     if categoria != None:
         publicaciones = publicaciones.filter(categoria = categoria)
@@ -37,7 +37,7 @@ def mostrar(request, pk):
     contexto['publicacion'] = publicacion
 
     comentario = Comentario.objects.filter(publicacion = publicacion)
-    contexto['comentarios'] = comentario
+    contexto['comentarios'] = comentario.order_by('-fechaCreacion')
     return render(request, 'publicaciones/mostrar.html', contexto)
 
 class crear(CreateView):
