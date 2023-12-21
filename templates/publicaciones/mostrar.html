@@ -13,7 +13,6 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
                     <h1>{{publicacion.titulo}}</h1>
-                    <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
                     <span class="meta">
                         Publicado por
                         <a href="#!">{{publicacion.usuario}}</a>
@@ -39,7 +38,7 @@
 <!-- Mostrar los comentarios -->
 
 <section>
-    {% for c in comentario %}
+    {% for c in comentarios %}
     <div class="cajaComentarios_container">
         <div class="cajaComentarios_comentario">
             <div class="cajaComentarios_titulo">
