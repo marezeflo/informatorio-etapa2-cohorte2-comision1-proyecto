@@ -26,54 +26,6 @@
                 <p>Rellene el siguiente formulario con sus datos:</p>
                 <div class="my-5">
                     <form id="contactForm" data-sb-form-api-token="API_TOKEN">{% csrf_token %} {{form.as_p}}
-                        <div class="form-floating">
-                            <input class="form-control" id="nombre" type="text" placeholder="Escriba su Nombre..." data-sb-validations="required" />
-                            <label for="nombre">Nombre</label>
-                            <div class="invalid-feedback" data-sb-feedback="Nombre:required">¡Debe colocarle un Nombre valido!</div>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" id="apellido" type="text" placeholder="Escriba su apellido..." data-sb-validations="required" />
-                            <label for="apellido">Apellido</label>
-                            <div class="invalid-feedback" data-sb-feedback="apellido:required">¡Debe colocarle apellido valido!</div>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" id="Usuario" type="text" placeholder="Escriba nombre de usuario..."  data-sb-validations="required" />
-                            <label for="Usuario">Usuario</label>
-                            <div class="invalid-feedback" data-sb-feedback="Usuario:required">¡Debe colocar un nombre de usuario valido!</div>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" id="email" type="text" placeholder="Escriba su correo electronico..." data-sb-validations="required" />
-                            <label for="email">correo electronico</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">¡Debe colocarse un correo electronico valido!</div>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" id="contraseña" type="text" placeholder="Escriba su contraseña..." data-sb-validations="required" />
-                            <label for="contraseña">contraseña</label>
-                            <div class="invalid-feedback" data-sb-feedback="contraseña:required">¡Debe colocarse una contraseña valida!</div>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" id="contraseña" type="text" placeholder="Vuelva a escribir su contraseña..." data-sb-validations="required" />
-                            <label for="contraseña">contraseña</label>
-                            <div class="invalid-feedback" data-sb-feedback="contraseña:required">¡Sus contraseñas no coinciden!</div>
-                        </div>
-
-                        <br />
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">¡Perfil creado!</div>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">¡Hubo un error al crear su perfil!</div></div>
-                        <!-- Submit Button-->
-                        <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Registrarme</button>
                     </form>
                 </div>
             </div>

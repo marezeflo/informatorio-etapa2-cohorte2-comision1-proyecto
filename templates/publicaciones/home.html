@@ -23,25 +23,64 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- pub = toda la public -->
+
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #cefdc0be;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img src="{% static 'img/planetita.ico' %}" alt="Bootstrap" width="30" height="34">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="?orden=nuevo"><strong>Nuevo</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?orden=antiguo"><strong>Antiguo</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?orden=a"><strong>A..Z</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?orden=z"><strong>Z..A</strong></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <strong>Categorias</strong>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="?">TODAS</a></li>
+                                    {% for categoria in categorias %}
+                                    <li><a class="dropdown-item"
+                                            href="?categoria={{categoria.pk}}">{{categoria.nombre}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             {% for publicacion in publicaciones %}
             <!-- Post preview-->
             <div class="post-preview">
                 <a href="{% url 'publicaciones:mostrar' publicacion.pk %}">
                     <h2 class="post-title">{{publicacion.titulo}}</h2>
-                    <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
                 </a>
                 <p class="post-meta">
-                    Publicado por
-                    <a href="#!">{{publicacion.usuario}}</a>
-                    en {{publicacion.fechaCreacion}}
+                    Publicado por 
+                    <strong>{{publicacion.usuario}}</strong>
+                    en {{publicacion.fechaCreacion.date}}
+                    - {{publicacion.categoria}}
                 </p>
             </div>
             <!-- Divider-->
             <hr class="my-4" />
             {% endfor %}
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
         </div>
     </div>
 </div>
