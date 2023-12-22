@@ -17,6 +17,13 @@
                         Publicado por
                         <a href="#!">{{publicacion.usuario}}</a>
                         el {{publicacion.fechaCreacion}}
+                        <br><br>
+                        {% if request.user.is_authenticated and request.user.is_staff or request.user == publicacion.usuario %}
+                            <a href="{% url 'publicaciones:editar' publicacion.pk %}"> Editar </a>
+                            |
+                            <a href="{% url 'publicaciones:eliminar' publicacion.pk %}"> Eliminar </a>
+                            |
+                        {% endif%}
                     </span>
                 </div>
             </div>
@@ -32,23 +39,6 @@
                 <!-- Divider-->
                 <hr class="my-4" />
                 <h3> Comentarios </h3>
-                    <div class="post-preview">
-                        {% for comentario in comentarios %}
-                            <!-- Divider-->
-                            <hr class="my-4" />
-                            <h5 style="font-weight: 600">{{comentario.contenido}}</h6>
-                            <p class="post-meta">
-                                Publicado por
-                                <a href="">{{comentario.usuario}}</a>
-                                el {{comentario.fechaCreacion}}
-                                <br>
-                                <a href="{% url 'comentarios:editar' comentario.pk %}"> Editar </a>
-                                |
-                                <a href="{% url 'comentarios:eliminar' comentario.pk %}"> Eliminar </a>
-                                |
-                            </p>
-                        {% endfor %}
-                    </div>
             </div>
         </div>
     </div>
@@ -58,19 +48,21 @@
 <!-- Mostrar los comentarios -->
 
 <section>
-    {% for c in comentarios %}
+    {% for comentario in comentarios %}
     <div class="cajaComentarios_container">
         <div class="cajaComentarios_comentario">
             <div class="cajaComentarios_titulo">
-                <div class="__usuario">@{{c.usuario}}</div>
-                <div class="__fecha">{{c.fechaEdicion.date}}</div>
+                <div class="__usuario">@{{comentario.usuario}}</div>
+                <div class="__fecha">{{comentario.fechaEdicion.date}}</div>
             </div>
-            <div class="cajaComentarios_contenido">{{c.contenido}}</div>
+            <div class="cajaComentarios_contenido">{{comentario.contenido}}</div>
         </div>
-        <div class="cajaComentarios_botones">
-            <a href="{% url 'comentarios:editar' c.pk %}">Editar</a><a
-                href="{% url 'comentarios:eliminar' c.pk %}">Eliminar</a>
-        </div>
+        {% if request.user.is_authenticated and request.user.is_staff or request.user == comentario.usuario %}
+            <div class="cajaComentarios_botones">
+                <a href="{% url 'comentarios:editar' comentario.pk %}">Editar</a><a
+                    href="{% url 'comentarios:eliminar' comentario.pk %}">Eliminar</a>
+            </div>
+        {% endif %}
     </div>
     {% endfor %}
 

@@ -35,12 +35,19 @@
                 <div class="post-preview">
                     <a href="{% url 'publicaciones:mostrar' publicacion.pk %}">
                         <h2 class="post-title">{{publicacion.titulo}}</h2>
-                        <p><img src="{{publicacion.imagen.url}}"></p>
+                        <p><img src="{{publicacion.imagen.url}}" style="width:100%"></p>
                     </a>
                     <p class="post-meta">
                         Publicado por
-                        <a href="">{{publicacion.usuario}}</a>
+                        <strong>{{publicacion.usuario}}</strong>
                         el {{publicacion.fechaCreacion}}
+                        <br>
+                        {% if request.user.is_authenticated and request.user.is_staff or request.user == publicacion.usuario %}
+                            <a href="{% url 'publicaciones:editar' publicacion.pk %}"> Editar </a>
+                            |
+                            <a href="{% url 'publicaciones:eliminar' publicacion.pk %}"> Eliminar </a>
+                            |
+                        {% endif%}
                     </p>
                 </div>
                 {% endfor %}

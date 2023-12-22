@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
@@ -6,6 +6,16 @@ from .models import Publicacion,Categoria
 from .forms import FormularioPublicar, FormularioEditar
 
 from apps.comentarios.models import Comentario
+
+#CONTROLA SI EL USUARIO ESTA LOGEADO EN UNA VISTA BASADA EN CLASES
+from django.contrib.auth.mixins import LoginRequiredMixin
+#CONTROLA SI EL USUARIO ESTA LOGEADO EN UNA VISTA BASADA EN FUNCIONEs
+from django.contrib.auth.decorators import login_required
+
+#CONTROLA QUE EL USUARIO SEA STAFF VISTA BASADA EN FUNCION
+from django.contrib.admin.views.decorators import staff_member_required
+#CONTROLA QUE EL USUARIO SEA STAFF PARA VISTA BASADA EN CLASE
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 # Create your views here.
 
@@ -40,18 +50,28 @@ def mostrar(request, pk):
     contexto['comentarios'] = comentario.order_by('-fechaCreacion')
     return render(request, 'publicaciones/mostrar.html', contexto)
 
-class crear(CreateView):
-    model = Publicacion
-    template_name = 'publicaciones/crear.html'
-    form_class = FormularioPublicar
-    succes_url = reverse_lazy('publicaciones:home')
+@login_required
+def crear(request):
+    categorias = Categoria.objects.all()
+    publicaciones = Publicacion.objects.all()
+    contexto = {'categorias':categorias,'publicaciones':publicaciones}
+    titulo = request.POST.get('titulo')
+    imagen = request.FILES.get('imagen')
+    contenido = request.POST.get('contenido')
+    categoria = request.POST.get('categoria')
+    categoria = Categoria.objects.get(pk = categoria)
+    usuario = request.user
 
-class editar(UpdateView):
+    Publicacion.objects.create(usuario=usuario, titulo=titulo, imagen=imagen, contenido=contenido, categoria=categoria)
+    return HttpResponseRedirect(reverse_lazy('publicaciones:mostrar', kwargs = {'pk':pk}))
+
+class editar(LoginRequiredMixin,UpdateView):
     model = Publicacion
     template_name = 'publicaciones/editar.html'
     form_class = FormularioEditar
+    success_url = reverse_lazy('publicaciones:home')
 
-class eliminar(DeleteView):
+class eliminar(LoginRequiredMixin,DeleteView):
     model = Publicacion
-    sucess_url = reverse_lazy('publicaciones:home')
+    success_url = reverse_lazy('publicaciones:home')
 

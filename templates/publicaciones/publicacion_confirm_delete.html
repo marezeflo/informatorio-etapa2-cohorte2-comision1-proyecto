@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<br><br><br><br>
+
+<div class="card text-center">
+    <div class="card-header">
+        ELIMINAR PUBLICACIÓN
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <h5 class="card-title">¡ADVERTENCIA!</h5>
+            <p class="card-text">¿Estás seguro que desea eliminar esta publicación: "{{ object }}" ?</p>
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Eliminar" class="btn btn-danger">
+        </form>
+    </div>
+    <div class="card-footer text-body-secondary">
+        Si eliminas esta publicación, no podrás volver a recuperarlo.
+    </div>
+</div>
+
+{% endblock contenido %}
