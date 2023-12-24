@@ -7,7 +7,7 @@
 {% block contenido %}
 
 <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+        <header class="masthead" style="background-image: url('{% static 'img/sobrenosotros.png' %}')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -24,10 +24,28 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Somos un grupo de programadores avocados al cambio climático y como afecta esto en nuestras vidas. Queremos aportar nuestro grano de arena y dar un lugar para que se conozcan las distintas realidades que convergen en nuestro objetivo, concientizar. </p>
+                        <p>
+                            Somos un grupo de programadores avocados al cambio climático y cómo afecta esto en nuestras vidas.
+                            Queremos aportar nuestro grano de arena y dar un lugar para que se conozcan las distintas realidades que convergen en nuestro objetivo, concientizar.
+                        </p>
+                        <p>Este grupo se compone por...</p>
+                        <ul>
+                            <li>Ariadna Sandoval</li>
+                            <li>Martina Piedrabuena</li>
+                            <li>Lautaro Mañanes</li>
+                            <li>Mariano Flores</li>
+                        </ul>
+                        <p>
+                            Nuestra capacitación como desarrolladores se la debemos al
+                            <a href="https://www.instagram.com/chacotec_/">Informatorio Chaco</a>
+                            acompañado por la
+                            <a href="https://empleo.chaco.gob.ar/informatorio/">Subsecretaría de Empleo del Chaco</a>.
+                        </p>
+                        <br>
+                        <img src="{% static 'img/informatorio.png' %}" style="width:100%">
                     </div>
                 </div>
             </div>
         </main>
-       
+
 {% endblock contenido %}
