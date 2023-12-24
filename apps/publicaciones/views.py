@@ -53,17 +53,27 @@ def mostrar(request, pk):
 @login_required
 def crear(request):
     categorias = Categoria.objects.all()
-    publicaciones = Publicacion.objects.all()
-    contexto = {'categorias':categorias,'publicaciones':publicaciones}
-    titulo = request.POST.get('titulo')
-    imagen = request.FILES.get('imagen')
-    contenido = request.POST.get('contenido')
-    categoria = request.POST.get('categoria')
-    categoria = Categoria.objects.get(pk = categoria)
-    usuario = request.user
 
-    Publicacion.objects.create(usuario=usuario, titulo=titulo, imagen=imagen, contenido=contenido, categoria=categoria)
-    return HttpResponseRedirect(reverse_lazy('publicaciones:mostrar', kwargs = {'pk':pk}))
+    if request.method == 'POST':
+        formulario = FormularioPublicar(request.POST, request.FILES)
+        if formulario.is_valid():
+            titulo = formulario.cleaned_data['titulo']
+            imagen = formulario.cleaned_data['imagen']
+            contenido = formulario.cleaned_data['contenido']
+            categoria = formulario.cleaned_data['categoria']
+            Publicacion.objects.create(
+                usuario=request.user,
+                titulo=titulo,
+                imagen=imagen,
+                contenido=contenido,
+                categoria=categoria
+            )
+            return HttpResponseRedirect(reverse_lazy('publicaciones:home'))
+    else:
+        formulario = FormularioPublicar()
+
+    contexto = {'categorias': categorias, 'formulario': formulario}
+    return render(request, 'publicaciones/crear.html', contexto)
 
 class editar(LoginRequiredMixin,UpdateView):
     model = Publicacion
