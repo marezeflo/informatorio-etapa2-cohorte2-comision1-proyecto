@@ -23,6 +23,7 @@ def home(request):
     categoria = request.GET.get('categoria',None)
     orden = request.GET.get('orden',None)
     publicaciones = Publicacion.objects.all()
+    publicaciones = publicaciones.order_by('-fechaCreacion')
     categorias = Categoria.objects.all()
 
     if orden == 'a':
