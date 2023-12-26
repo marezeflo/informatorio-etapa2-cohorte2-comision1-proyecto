@@ -70,6 +70,7 @@
             <div class="post-preview">
                 <a href="{% url 'publicaciones:mostrar' publicacion.pk %}">
                     <h2 class="post-title">{{publicacion.titulo}}</h2>
+                    <p><img src="{{publicacion.imagen.url}}" style="width:50%"></p>
                 </a>
                 <p class="post-meta">
                     Publicado por 
