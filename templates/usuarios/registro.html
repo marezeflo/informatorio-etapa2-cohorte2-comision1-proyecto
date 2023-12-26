@@ -26,6 +26,7 @@
                 <p>Rellene el siguiente formulario con sus datos:</p>
                 <div class="my-5">
                     <form id="contactForm" data-sb-form-api-token="API_TOKEN">{% csrf_token %} {{form.as_p}}
+                    <input type="submit" value="Registrarse">
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                     </form>
                 </div>
