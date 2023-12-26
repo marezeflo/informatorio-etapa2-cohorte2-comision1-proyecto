@@ -12,7 +12,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Registrate</h1>
-                    <span class="subheading">¡Unete a nuestra comunidad!</span>
+                    <span class="subheading">¡Únete a nuestra comunidad!</span>
                 </div>
             </div>
         </div>
@@ -25,9 +25,10 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>Rellene el siguiente formulario con sus datos:</p>
                 <div class="my-5">
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">{% csrf_token %} {{form.as_p}}
-                    <input type="submit" value="Registrarse">
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
                     </form>
                 </div>
             </div>
