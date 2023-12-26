@@ -28,6 +28,7 @@
                     <form method="post">
                         {% csrf_token %}
                         {{form.as_p}}
+                        <p><strong>Verifique bien los datos y las indicaciones antes de registarse. Las correcciones figurarán ARRIBA de este mensaje.</strong><p>
                         <button type="submit" class="btn btn-primary">Registrarse</button>
                     </form>
                 </div>
